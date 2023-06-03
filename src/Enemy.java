@@ -4,4 +4,10 @@ public class Enemy extends Unit{
         experience = expirienceL;
         this.character = character;
     }
+
+    public void accept(Unit u){
+        u.visit(this);
+    }
+
+
 }
