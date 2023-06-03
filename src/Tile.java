@@ -5,4 +5,8 @@ public class Tile {
     public Tile(Position pos){
         this.pos = pos;
     }
+
+    public String toString(){
+        System.out.print(character);
+    }
 }
