@@ -1,2 +1,2 @@
-package PACKAGE_NAME;public class Energy {
+public class Energy extends Ability{
 }

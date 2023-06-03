@@ -1,2 +1,2 @@
-package PACKAGE_NAME;public class Health {
+public class Health extends Ability{
 }

@@ -1,2 +1,2 @@
-package PACKAGE_NAME;public class Wall {
+public class Wall extends Tile{
 }

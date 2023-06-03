@@ -1,2 +1,2 @@
-package PACKAGE_NAME;public class Mana {
+public class Mana extends Ability{
 }

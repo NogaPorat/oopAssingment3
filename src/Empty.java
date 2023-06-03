@@ -1,2 +1,2 @@
-package PACKAGE_NAME;public class Empty {
+public class Empty extends Tile{
 }

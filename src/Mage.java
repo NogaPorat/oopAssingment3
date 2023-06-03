@@ -1,2 +1,2 @@
-package PACKAGE_NAME;public class Mage {
+public class Mage extends Player{
 }

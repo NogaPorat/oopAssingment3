@@ -1,2 +1,2 @@
-package PACKAGE_NAME;public class Rogue {
+public class Rogue extends Player {
 }
