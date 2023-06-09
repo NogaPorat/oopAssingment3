@@ -1,6 +1,10 @@
+import java.util.List;
 abstract public class Player extends Unit {
     protected int playerLevel;
     protected Resource resource;
+    protected SendMessage sm;
+
+    protected SpecialAbillityInRange sa;
 
     public Player(Position pos, String name, Health health, int Apoints, int Dpoints){
         super(pos, name, health, Apoints, Dpoints);
@@ -12,13 +16,16 @@ abstract public class Player extends Unit {
     public void levelUp(){
         experience = experience - (50 * playerLevel);
         playerLevel = playerLevel + 1;
-        health.healthPoll = health.healthPoll + (10 * playerLevel);
-        health.healthAmount = health.healthPoll;
+        health.levelUp(playerLevel);
         attackPoints = attackPoints + (4 * playerLevel);
         defencePoints = defencePoints + playerLevel;
         resource.levelUp(playerLevel);
     }
-
+    public void visit(Enemy e){
+        combat!!!!!!
+    }
+    public void visit(Player p){
+    }
     abstract public void castSpecialAbility();
 
     public void accept(Unit u){
@@ -27,17 +34,44 @@ abstract public class Player extends Unit {
 
     public void castAttempts(){
         if (!resource.enough()){
-            throw new Exception("not anough resource to make the action");
+            sendMessage("not anough resource to make the action");
         }
-        cast();
-        resource.cast();
+        else{
+            SpecialAbillity();
+            resource.cast();
+        }
+
+
     }
 
-    abstract protected void cast();
+
+    abstract void SpecialAbillity();
+
+    abstract void cast(List<Enemy> enemys);
 
     public void gameTick(){
         resource.gameTick(playerLevel);
     }
+
+    protected void tryLevelUp(){
+        if (experience >= 50 * playerLevel){
+            levelUp();
+        }
+    }
+
+    public void setSpecialAbilityInRange(SpecialAbillityInRange sa){
+        this.sa = sa;
+    }
+
+
+    public void setSendMessage(SendMessage sm){
+        this.sm = sm;
+    }
+
+    public void sendMessage(String msg){
+        sm.send(msg);
+    }
+
 
 
 

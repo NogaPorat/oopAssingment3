@@ -9,5 +9,9 @@ public class Enemy extends Unit{
         u.visit(this);
     }
 
+    public void damage(int damage){
+        health.damage(damage);
+    }
+
 
 }
