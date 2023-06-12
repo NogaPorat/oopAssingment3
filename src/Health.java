@@ -16,4 +16,4 @@ public class Health extends Resource{
 
     public void damage(int damage){
         healthAmount = healthAmount - damage;
-    }
+    }}

@@ -20,6 +20,7 @@ abstract public class Unit extends Tile{
     public void visit(Wall w){
     }
 
+
     abstract public void visit(Enemy e);
     abstract public void visit(Player p);
 
