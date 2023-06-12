@@ -6,6 +6,9 @@ abstract public class Tile {
         this.pos = pos;
     }
 
+    public Position getPos(){
+        return pos;
+    }
     public String toString(){
         return ""+ character;
     }
@@ -16,4 +19,9 @@ abstract public class Tile {
     }
 
     abstract public void accept(Unit u);
+}
+
+    public double range(Tile t){
+      return pos.range(t.getPos());
+    }
 }
