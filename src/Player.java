@@ -22,7 +22,7 @@ abstract public class Player extends Unit {
         resource.levelUp(playerLevel);
     }
     public void visit(Enemy e){
-        combat!!!!!!
+        //combat!!!!!!
     }
     public void visit(Player p){
     }

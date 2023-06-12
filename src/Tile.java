@@ -1,4 +1,4 @@
-public class Tile {
+abstract public class Tile {
     protected char character;
     protected Position pos;
 
@@ -10,10 +10,16 @@ public class Tile {
         return pos;
     }
     public String toString(){
-        System.out.print(character);
+        return ""+ character;
     }
 
+
+
     public double range(Tile t){
-      return pos.range(t.getPos());
+        return pos.range(t.pos);
     }
+
+    abstract public void accept(Unit u);
+
+
 }

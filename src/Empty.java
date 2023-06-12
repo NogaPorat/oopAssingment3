@@ -3,4 +3,8 @@ public class Empty extends Tile{
         super(pos);
         this.character = '.';
     }
+
+    public void accept(Unit u){
+        u.visit(this);
+    }
 }
