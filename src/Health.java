@@ -26,7 +26,7 @@ public class Health extends Resource{
 
     @Override
     public boolean enough() {
-        return false;
+        return healthAmount > 0;
     }
 
 

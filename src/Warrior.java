@@ -9,17 +9,26 @@ public class Warrior extends Player  {
         super(pos, name, health, Apoints, Dpoints);
         resource = new Cooldown(ability);
     }
-    public void cast(List<Enemy> enemies){
-        sendMessage(this.name+" cast special ability ");
-        if (!enemies.isEmpty()){
-            Collections.shuffle(enemies);
-            Enemy e = enemies.get(0);
-            e.damage((int) (this.health.healthPoll * 0.1));
-            if (e.isDead()){
-                getExperianceOfEnemy(e);
-                e.callDeathOfUnit();
+//    public void cast(List<Enemy> enemies){
+//        sendMessage(this.name+" cast special ability ");
+//        if (!enemies.isEmpty()){
+//            Collections.shuffle(enemies);
+//            Enemy e = enemies.get(0);
+//            e.damage((int) (this.health.healthPoll * 0.1));
+//        }
+
+        public void cast(List<Enemy> enemies){
+            sendMessage(this.name+" cast special ability ");
+            if (!enemies.isEmpty()){
+                Collections.shuffle(enemies);
+                Enemy e = enemies.get(0);
+                e.damage((int) (this.health.healthPoll * 0.1));
+                if (e.isDead()){
+                    getExperianceOfEnemy(e);
+                    e.callDeathOfUnit();
+                }
             }
-        }
+
 
 
     }

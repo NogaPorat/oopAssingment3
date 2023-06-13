@@ -23,4 +23,10 @@ public class Position {
         X = X + moveX;
         Y = Y + moveY;
     }
+
+    public void set(int x, int y){
+        X = x;
+        Y = y;
+    }
+
 }

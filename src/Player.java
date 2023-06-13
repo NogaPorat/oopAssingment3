@@ -3,8 +3,6 @@ abstract public class Player extends Unit {
     protected int playerLevel;
     protected Resource resource;
 
-    protected boolean isAlive;
-
 
     protected SpecialAbillityInRange sa;
 
@@ -46,9 +44,9 @@ abstract public class Player extends Unit {
 
     }
 
-    public void getExperianceOfEnemy(Unit u){
-        this.experience= this.experience+ u.experience;
-        sendMessage(this.name + " gets "+ u.experience + " experiance points from "+ u.name );
+    public void getExperianceOfEnemy(Enemy e){
+        this.experience= this.experience+ e.experience;
+        sendMessage(this.name + " gets "+ e.experience + " experiance points from "+ e.name );
         tryLevelUp();
     }
 
@@ -70,7 +68,7 @@ abstract public class Player extends Unit {
 
     @Override
     public void callDeathOfUnit() {
-        if(isAlive){}
+        if(isAlive()){}
         //needs to notify board for death
     }
 
@@ -78,8 +76,15 @@ abstract public class Player extends Unit {
         this.sa = sa;
     }
 
+    public boolean isAlive() {
+        return health.enough();
+    }
 
-
+    public void checkIfDead(Enemy e){
+        if (isDead()){
+            //לעשות איקס בבורד ונמחק השחקן
+        }
+    }
 
 
 

@@ -54,19 +54,24 @@ abstract public class Unit extends Tile{
 
 
     // this is attacker , u is defender
-    public void combat(Unit u){
-        sendMessage(this.name + " entered to combat with "+ u.name);
+//    public void combat(Unit u){
+//        sendMessage(this.name + " entered to combat with "+ u.name);
+//        attackRoll(u);
+//        if (u.isDead()){
+//            getExperianceOfEnemy(u);
+//            u.callDeathOfUnit();
+//        }
+//    }
+
+    public void combat(Unit u) {
+        sendMessage(this.name + " entered to combat with " + u.name);
         attackRoll(u);
-        if (u.isDead()){
-            getExperianceOfEnemy(u);
-            u.callDeathOfUnit();
-        }
+        u.checkIfDead(this);
     }
 
 
+    abstract public void checkIfDead(Unit u);
 
-    //takes experiance from death unit
-    abstract public void getExperianceOfEnemy(Unit u);
 
 
 
