@@ -2,6 +2,7 @@ public class Health extends Resource{
     protected int healthPoll;
     protected int healthAmount;
 
+
     public Health(){
 
     }
@@ -16,4 +17,16 @@ public class Health extends Resource{
 
     public void damage(int damage){
         healthAmount = healthAmount - damage;
-    }}
+    }
+
+
+    public boolean isDead(){
+        return healthAmount > 0;
+    }
+
+}
+
+
+
+
+

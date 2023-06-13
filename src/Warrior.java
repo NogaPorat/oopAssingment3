@@ -14,6 +14,10 @@ public class Warrior extends Player  {
             Collections.shuffle(enemies);
             Enemy e = enemies.get(0);
             e.damage((int) (this.health.healthPoll * 0.1));
+            if (e.isDead()){
+                getExperianceOfEnemy(e);
+                e.callDeathOfUnit();
+            }
         }
 
 

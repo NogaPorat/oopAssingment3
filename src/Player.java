@@ -2,7 +2,9 @@ import java.util.List;
 abstract public class Player extends Unit {
     protected int playerLevel;
     protected Resource resource;
-    protected SendMessage sm;
+
+    protected boolean isAlive;
+
 
     protected SpecialAbillityInRange sa;
 
@@ -22,11 +24,11 @@ abstract public class Player extends Unit {
         resource.levelUp(playerLevel);
     }
     public void visit(Enemy e){
-        //combat!!!!!!
+        combat(e);
     }
     public void visit(Player p){
     }
-    abstract public void castSpecialAbility();
+
 
     public void accept(Unit u){
         u.visit(this);
@@ -44,6 +46,12 @@ abstract public class Player extends Unit {
 
     }
 
+    public void getExperianceOfEnemy(Unit u){
+        this.experience= this.experience+ u.experience;
+        sendMessage(this.name + " gets "+ u.experience + " experiance points from "+ u.name );
+        tryLevelUp();
+    }
+
 
     abstract void SpecialAbillity();
 
@@ -59,18 +67,20 @@ abstract public class Player extends Unit {
         }
     }
 
+
+    @Override
+    public void callDeathOfUnit() {
+        if(isAlive)
+            throw new Exception("player is not death");
+        //needs to notify board for death
+    }
+
     public void setSpecialAbilityInRange(SpecialAbillityInRange sa){
         this.sa = sa;
     }
 
 
-    public void setSendMessage(SendMessage sm){
-        this.sm = sm;
-    }
 
-    public void sendMessage(String msg){
-        sm.send(msg);
-    }
 
 
 
