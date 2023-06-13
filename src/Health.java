@@ -24,6 +24,23 @@ public class Health extends Resource{
         return healthAmount > 0;
     }
 
+    @Override
+    public boolean enough() {
+        return false;
+    }
+
+
+    public void gameTick(int i){}
+
+    @Override
+    public void cast() {}
+
+
+    public String toString(){
+        String s = "health:"+ healthAmount + "/"+ healthPoll;
+        return s;
+    }
+
 }
 
 
