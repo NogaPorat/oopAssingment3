@@ -11,4 +11,22 @@ public class Trap extends Enemy{
         tickCount = 0;
         visible = true;
     }
+
+    public void attack(Unit u){
+        u.damage(attackPoints);
+    }
+
+    public void gameTick(Player p){
+        visible = tickCount < visibilityTime;
+        if (tickCount == visibilityTime + inVisibilityTime) {
+            tickCount = 0;
+        }
+        else{
+            tickCount = tickCount + 1;
+        }
+        if (range(p) < 2){
+            attack(p);
+        }
+
+    }
 }

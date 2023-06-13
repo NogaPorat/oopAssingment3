@@ -14,14 +14,12 @@ abstract public class Tile {
     }
 
 
+
     public double range(Tile t){
         return pos.range(t.pos);
     }
 
     abstract public void accept(Unit u);
-}
 
-    public double range(Tile t){
-      return pos.range(t.getPos());
-    }
+
 }
