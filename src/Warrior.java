@@ -10,6 +10,7 @@ public class Warrior extends Player  {
         resource = new Cooldown(ability);
     }
     public void cast(List<Enemy> enemies){
+        sendMessage(this.name+" cast special ability ");
         if (!enemies.isEmpty()){
             Collections.shuffle(enemies);
             Enemy e = enemies.get(0);
@@ -22,11 +23,11 @@ public class Warrior extends Player  {
 
 
     }
-    public void levelUp(int level){
+    public void levelUp(){
         super.levelUp();
-        health.levelUpWarior(level);
-        attackPoints = attackPoints + (2 * level);
-        defencePoints = defencePoints + level;
+        health.levelUpWarior(this.playerLevel);
+        attackPoints = attackPoints + (2 * this.playerLevel);
+        defencePoints = defencePoints + this.playerLevel;
     }
 
     @Override

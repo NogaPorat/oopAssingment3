@@ -39,8 +39,8 @@ abstract public class Player extends Unit {
             sendMessage("not anough resource to make the action");
         }
         else{
-            SpecialAbillity();
             resource.cast();
+            SpecialAbillity();
         }
 
 
@@ -70,8 +70,7 @@ abstract public class Player extends Unit {
 
     @Override
     public void callDeathOfUnit() {
-        if(isAlive)
-            throw new Exception("player is not death");
+        if(isAlive){}
         //needs to notify board for death
     }
 

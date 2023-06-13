@@ -37,4 +37,11 @@ public class Mana extends Resource{
     public void gameTick(int level) {
         currentMana = Math.min(manaPool, currentMana + level);
     }
+
+
+    public int GetHitsCount(){
+        return hitsCount;
+    }
 }
+
+
