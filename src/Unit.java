@@ -70,7 +70,8 @@ abstract public class Unit extends Tile{
     }
 
 
-    abstract public void checkIfDead(Unit u);
+    abstract public void checkIfDead(Enemy e);
+    abstract public void checkIfDead(Player p);
 
 
 

@@ -86,7 +86,5 @@ abstract public class Player extends Unit {
         }
     }
 
-
-
-
+    public void checkIfDead(Player p){
 }
