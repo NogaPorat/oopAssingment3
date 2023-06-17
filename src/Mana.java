@@ -2,17 +2,12 @@ public class Mana extends Resource{
     protected int manaPool;
     protected int currentMana;
     protected int manaCost;
-    protected int spellPower;
-    protected int hitsCount;
-    protected int abilityRange;
 
-    public Mana(int manaPool, int manaCost, int spellPower, int hitsCount, int abilityRange){
+
+    public Mana(int manaPool, int manaCost) {
         this.manaPool = manaPool;
         currentMana = manaPool / 4;
         this.manaCost = manaCost;
-        this.spellPower = spellPower;
-        this.hitsCount = hitsCount;
-        this.abilityRange = abilityRange;
     }
 
     @Override
@@ -24,13 +19,13 @@ public class Mana extends Resource{
     public void levelUp(int level) {
         manaPool = manaPool + (25 * level);
         currentMana = Math.min(currentMana + (manaPool / 4), manaPool);
-        spellPower = spellPower + (10 * level);
+
     }
 
     @Override
     public void cast() {
         currentMana = currentMana - manaCost;
-        hitsCount = 0;
+
     }
 
     @Override
@@ -39,21 +34,13 @@ public class Mana extends Resource{
     }
 
 
-    public int GetHitsCount(){
-        return hitsCount;
-    }
+
 
     @Override
     public String toString() {
-        return "Mana{" +
-                "manaPool: " + manaPool +
-                ", currentMana: " + currentMana +
-                ", manaCost: " + manaCost +
-                ", spellPower: " + spellPower +
-                ", hitsCount: " + hitsCount +
-                ", abilityRange: " + abilityRange +
-                '}';
+        return "Mana:" + manaPool+"/"+manaCost;
     }
+
 }
 
 
