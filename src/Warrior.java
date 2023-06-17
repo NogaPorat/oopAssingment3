@@ -1,21 +1,13 @@
 import java.util.List;
 import java.util.Collections;
 
-
-
 public class Warrior extends Player  {
 
-    public Warrior(Position pos, String name, Health health, int Apoints, int Dpoints, int ability){
+    public Warrior(Position pos, String name, int health, int Apoints, int Dpoints, int ability){
         super(pos, name, health, Apoints, Dpoints);
         resource = new Cooldown(ability);
     }
-//    public void cast(List<Enemy> enemies){
-//        sendMessage(this.name+" cast special ability ");
-//        if (!enemies.isEmpty()){
-//            Collections.shuffle(enemies);
-//            Enemy e = enemies.get(0);
-//            e.damage((int) (this.health.healthPoll * 0.1));
-//        }
+
 
         public void cast(List<Enemy> enemies){
             sendMessage(this.name+" cast special ability ");
@@ -24,13 +16,10 @@ public class Warrior extends Player  {
                 Enemy e = enemies.get(0);
                 e.damage((int) (this.health.healthPoll * 0.1));
                 if (e.isDead()){
-                    getExperianceOfEnemy(e);
+                    getExperianceOf(e);
                     e.callDeathOfUnit();
                 }
             }
-
-
-
     }
     public void levelUp(){
         super.levelUp();

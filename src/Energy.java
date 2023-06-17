@@ -25,4 +25,8 @@ public class Energy extends Resource{
     public void levelUp(int level) {
         currentEnergy = 100;
     }
+
+    public String toString(){
+        return  "current energy: " + currentEnergy + "/" + cost;
+    }
 }

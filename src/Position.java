@@ -29,4 +29,13 @@ public class Position {
         Y = y;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Position){
+            if (((Position) obj).getX() == getX() && ((Position) obj).getY() == getY()){
+                return true;
+            }
+        }
+        return false;
+    }
 }

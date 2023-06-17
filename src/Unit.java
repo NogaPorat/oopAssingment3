@@ -4,13 +4,13 @@ abstract public class Unit extends Tile{
     protected int attackPoints;
     protected int defencePoints;
     protected int experience;
-
+    protected UnitMoveCallBack unitMoveCallBack;
     protected SendMessage sm;
 
-    public Unit(Position pos, String name, Health health, int Apoints, int Dpoints){
+    public Unit(Position pos, String name, int health, int Apoints, int Dpoints){
         super(pos);
         this.name = name;
-        this.health = health;
+        this.health = new Health(health);
         this.attackPoints = Apoints;
         this.defencePoints = Dpoints;
     }
@@ -52,32 +52,21 @@ abstract public class Unit extends Tile{
     }
 
 
-
-    // this is attacker , u is defender
-//    public void combat(Unit u){
-//        sendMessage(this.name + " entered to combat with "+ u.name);
-//        attackRoll(u);
-//        if (u.isDead()){
-//            getExperianceOfEnemy(u);
-//            u.callDeathOfUnit();
-//        }
-//    }
-
-    public void combat(Unit u) {
+    public void combat(Unit u) { // this attacker u defender
         sendMessage(this.name + " entered to combat with " + u.name);
         attackRoll(u);
-        u.checkIfDead(this);
+        if (u.isDead()){
+            getExperianceOf(u);
+            swapPositions(u);
+            u.callDeathOfUnit();
+        }
     }
 
 
-    abstract public void checkIfDead(Enemy e);
-    abstract public void checkIfDead(Player p);
+    abstract public void getExperianceOf(Unit u); // checks if u id sead and takes the expirience
 
 
-
-
-
-    // return is experiance and notify the board about death. need to make sure this is death
+    //notify the board about death. need to make sure this is death
     abstract public void callDeathOfUnit();
 
     //damage the unit in damageValue
@@ -91,9 +80,6 @@ abstract public class Unit extends Tile{
         return health.isDead();
     }
 
-
-
-
     public void setSendMessage(SendMessage sm){
         this.sm = sm;
     }
@@ -102,5 +88,30 @@ abstract public class Unit extends Tile{
         sm.send(msg);
     }
 
+    public boolean isAlive(){
+        return health.enough();
+    }
 
+    public void interact(Tile t){
+        t.accept(this);
+    }
+    public void setUnitMoveCallBack(UnitMoveCallBack um){
+        this.unitMoveCallBack = um;
+    }
+
+    public void Move(Position pos){
+        unitMoveCallBack.move(pos);
+    }
+
+    public String toString(){
+        return super.toString();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String description(){
+        return ("Name: " + name + " Health: " + health.toString() + " defence points: " + defencePoints + " attack points: " + attackPoints + " Experience: " + experience);
+    }
 }

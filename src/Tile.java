@@ -13,8 +13,6 @@ abstract public class Tile {
         return ""+ character;
     }
 
-
-
     public double range(Tile t){
         return pos.range(t.pos);
     }
