@@ -37,6 +37,8 @@ public class Enemy extends Unit{
         }
     }
 
+    public void checkIfDead(Enemy e) {
+    }
 
 
 }
