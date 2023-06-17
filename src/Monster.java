@@ -1,40 +1,41 @@
+import java.util.Random;
+
 public class Monster extends Enemy {
     protected int visionRange;
 
-    public Monster(Position pos, String name, Health health, int Apoints, int Dpoints, int expirienceL, int visionRangre) {
-        super(pos, name, health, Apoints, Dpoints, expirienceL);
+    public Monster(char s, Position pos, String name, int health, int Apoints, int Dpoints, int expirienceL, int visionRangre) {
+        super(s, pos, name, health, Apoints, Dpoints, expirienceL);
         this.visionRange = visionRangre;
     }
 
-    public void attack(Unit u){
-        u.damage(attackPoints);
-    }
-
-    public void gameTick(Player p){
+    public void gameTick(Player p) {
+        Position moveLeft = new Position(pos.getX() - 1, pos.getY());
+        Position moveRight = new Position(pos.getX() + 1, pos.getY());
+        Position moveUp = new Position(pos.getX(), pos.getY() + 1);
+        Position moveDown = new Position(pos.getX(), pos.getY() - 1);
+        Position [] positions = {moveLeft, moveRight, moveUp, moveDown};
+        Position newPos;
         if (range(p) < visionRange) {
             int dx = pos.getX() - p.pos.getX();
             int dy = pos.getY() - p.pos.getY();
             if (dx > dy) {
                 if (dx > 0) {
-                    pos.set(pos.getX() - 1, pos.getY()); // move left???
+                    newPos = positions[0];
                 } else {
-                    pos.set(pos.getX() + 1, pos.getY()); // move right???
+                    newPos =  positions[1];
                 }
             } else {
                 if (dy > 0) {
-                    pos.set(pos.getX(), pos.getY() + 1); // move up???
+                    newPos = positions[2];
                 } else {
-                    pos.set(pos.getX(), pos.getY() - 1); // move up???
+                    newPos = positions[3];
                 }
             }
         }
-        else{
-            // preform a random action
+        else {
+            int i = (int)(4 * Math.random());
+            newPos = positions[i];
         }
-
-
-
-
-
-
+        this.Move(newPos);
+    }
 }

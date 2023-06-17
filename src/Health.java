@@ -3,8 +3,9 @@ public class Health extends Resource{
     protected int healthAmount;
 
 
-    public Health(){
-
+    public Health(int healthPoll){
+        this.healthPoll = healthPoll;
+        this.healthAmount = healthPoll;
     }
     public void levelUp(int level){
         healthPoll = healthPoll + (10 * level);
@@ -37,7 +38,7 @@ public class Health extends Resource{
 
 
     public String toString(){
-        String s = "health:"+ healthAmount + "/"+ healthPoll;
+        String s = healthAmount + "/"+ healthPoll;
         return s;
     }
 

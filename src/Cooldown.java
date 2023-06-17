@@ -27,4 +27,10 @@ public class Cooldown extends Resource{
     public void levelUp(int level) {
         remaining = 0;
     }
+
+    @Override
+    public String toString() {
+        return "cooldown remaining: "+ remaining;
+    }
 }
+

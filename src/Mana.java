@@ -42,6 +42,18 @@ public class Mana extends Resource{
     public int GetHitsCount(){
         return hitsCount;
     }
+
+    @Override
+    public String toString() {
+        return "Mana{" +
+                "manaPool: " + manaPool +
+                ", currentMana: " + currentMana +
+                ", manaCost: " + manaCost +
+                ", spellPower: " + spellPower +
+                ", hitsCount: " + hitsCount +
+                ", abilityRange: " + abilityRange +
+                '}';
+    }
 }
 
 

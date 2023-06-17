@@ -1,5 +1,8 @@
-public class Enemy extends Unit{
-    public Enemy(char character, Position pos, String name, Health health, int Apoints, int Dpoints, int expirienceL){
+abstract public class Enemy extends Unit{
+    protected EnemyDeathCallBack enemyDeathCallBack;
+
+
+    public Enemy(char character, Position pos, String name, int health, int Apoints, int Dpoints, int expirienceL){
         super(pos, name, health, Apoints, Dpoints);
         experience = expirienceL;
         this.character = character;
@@ -19,26 +22,21 @@ public class Enemy extends Unit{
         combat(p);
      }
 
-    public boolean isAlive(){
-        return health.enough();
-    }
-
 
     // return is experiance and notify the board about death. need to make sure this is death
      public void callDeathOfUnit(){
-         if(isAlive()){}
-         //needs to notify board for death
+         if(!isAlive()){
+             enemyDeathCallBack.call();
+         }
      }
 
-    public void checkIfDead(Player p){
-        if (isDead()){
-            p.getExperianceOfEnemy(this);
-            callDeathOfUnit();
-        }
+
+    public void getExperianceOf(Unit u) {
     }
 
-    public void checkIfDead(Enemy e) {
+    public void setEnemyDeathCallBack(EnemyDeathCallBack enemyDeathCallBack) {
+        this.enemyDeathCallBack = enemyDeathCallBack;
     }
 
-
+    abstract public void gameTick(Player p);
 }
