@@ -11,36 +11,20 @@ public class Board {
     private List<Enemy> enemies;
     private List<Tile> tiles;
     protected SendMessage sm;
+    protected Position playerStartPos;
 
-    public Board(Player p, String path){
+    public Board(Player p, List<String> lines){
         player = p;
-        List<String> lines = readAllLines(path);
         tiles = convertStringToBoard(lines);
-
-
-
-        SpecialAbillityInRange sa= (range) -> {castInRange(range);};
-        Player p = new Player();
-        p.setSpecialAbilityInRange(sa);
-        Enemy e = new Enemy();
-        e.setUnitMoveCallBack((position) -> {e.interact(getTileInPos(position));});
-        p.setUnitMoveCallBack((position) -> {p.interact(getTileInPos(position));});
-        SendMessage unitMessage = (msg) -> {sm.send(msg);};
-        p.setSendMessage(unitMessage);
-
-
-
     }
 
-    public List<String> readAllLines(String path) {
-        List<String> lines = Collections.emptyList();
-        try {
-            lines = Files.readAllLines(Paths.get(path));
-        } catch (IOException e) {
-            System.out.println(e.getMessage() + "\n" +
-                    e.getStackTrace());
+    public void gameTick(Scanner s){
+        boolean act = player.gameTick(s);
+        if (act){
+            for (Enemy e : enemies){
+                e.gameTick(player);
+            }
         }
-        return lines;
     }
 
     public List<Tile> convertStringToBoard(List<String> lines) {
@@ -57,10 +41,12 @@ public class Board {
         return ans;
     }
 
-
-
-
-
+    public void playerInit() {
+        player.pos = playerStartPos;
+        player.setSendMessage((msg) -> sendMessage(msg));
+        player.setUnitMoveCallBack((position, unit) -> unit.interact(getTileInPos(position)));
+        player.setSpecialAbilityInRange((range)-> castInRange(range));
+    }
 
     public void killedEnemy(Enemy e){
         Tile newEmt = new Empty(e.pos);
@@ -68,6 +54,7 @@ public class Board {
         tiles.remove(e);
         tiles.add(newEmt);
     }
+
 
     public boolean isActive(){
         return (player.isAlive() && !enemies.isEmpty());
@@ -92,19 +79,11 @@ public class Board {
         player.cast(enemiesInRange);
     }
 
-    public void gameTick(Scanner s){
-        boolean act = player.gameTick(s);
-        if (act) {
-            for (Enemy e : enemies) {
-                e.gameTick(player);
-            }
-        }
-    }
 
 
-
-    public boolean gameIsActiva(){
+    public boolean boardIsActiva(){
         return player.isAlive() & !enemies.isEmpty();
+
     }
 
     public String toString(){
@@ -120,6 +99,7 @@ public class Board {
                 y = t.getPos().getY();
             }
         }
+        return ans;
     }
 
     public void setSendMessage(SendMessage sm){
@@ -141,7 +121,7 @@ public class Board {
             t = new Wall(new Position(i,y));
         }
         if (c == '@'){
-            player.pos = new Position(i,y);
+            playerStartPos = new Position(i,y);
             t = player;
         }
         Enemy e = null;
@@ -186,6 +166,9 @@ public class Board {
         }
         if (e!= null){
             enemies.add(e);
+            e.setSendMessage((msg) -> sendMessage(msg));
+            e.setEnemyDeathCallBack((enemy) -> killedEnemy(enemy));
+            e.setUnitMoveCallBack((position, unit) -> unit.interact(getTileInPos(position)));
             return e;
         }
         return t;

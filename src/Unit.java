@@ -108,7 +108,7 @@ abstract public class Unit extends Tile{
     }
 
     public void Move(Position pos){
-        unitMoveCallBack.move(pos);
+        unitMoveCallBack.move(pos, this);
     }
 
     public String toString(){
