@@ -37,6 +37,7 @@ abstract public class Unit extends Tile{
     public void defenseRoll(int attack){
         int defense = (int) (Math.random()*defencePoints);
         sendMessage(this.name + " rolled "+defense + " defense points");
+        sendMessage("");
         if (attack - defense > 0){
             damage(attack-defense);
         }
@@ -47,6 +48,7 @@ abstract public class Unit extends Tile{
     public void attackRoll(Unit u){
          int myAttack=(int) (Math.random()*attackPoints);;
          sendMessage(this.name + " rolled "+myAttack + " attack points");
+         sendMessage("");
          u.defenseRoll(myAttack);
 
     }
@@ -54,6 +56,7 @@ abstract public class Unit extends Tile{
 
     public void combat(Unit u) { // this attacker u defender
         sendMessage(this.name + " entered to combat with " + u.name);
+        sendMessage("");
         sendMessage(this.description());
         sendMessage(u.description());
         attackRoll(u);

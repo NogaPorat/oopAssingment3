@@ -15,7 +15,9 @@ public class Board {
 
     public Board(Player p, List<String> lines){
         player = p;
+        enemies = new ArrayList<Enemy>();
         tiles = convertStringToBoard(lines);
+
     }
 
     public void gameTick(Scanner s){
@@ -46,6 +48,11 @@ public class Board {
         player.setSendMessage((msg) -> sendMessage(msg));
         player.setUnitMoveCallBack((position, unit) -> unit.interact(getTileInPos(position)));
         player.setSpecialAbilityInRange((range)-> castInRange(range));
+        for(Enemy e:enemies){
+            e.setSendMessage((msg) -> sendMessage(msg));
+            e.setEnemyDeathCallBack((enemy) -> killedEnemy(enemy));
+            e.setUnitMoveCallBack((position, unit) -> unit.interact(getTileInPos(position)));
+        }
     }
 
     public void killedEnemy(Enemy e){
@@ -99,6 +106,7 @@ public class Board {
                 y = t.getPos().getY();
             }
         }
+        ans = ans + "\n" + player.description();
         return ans;
     }
 
@@ -166,9 +174,7 @@ public class Board {
         }
         if (e!= null){
             enemies.add(e);
-            e.setSendMessage((msg) -> sendMessage(msg));
-            e.setEnemyDeathCallBack((enemy) -> killedEnemy(enemy));
-            e.setUnitMoveCallBack((position, unit) -> unit.interact(getTileInPos(position)));
+
             return e;
         }
         return t;

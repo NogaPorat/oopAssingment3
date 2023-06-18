@@ -31,4 +31,5 @@ public class Trap extends Enemy{
         }
 
     }
+    public void swapPositions(Unit u){}
 }

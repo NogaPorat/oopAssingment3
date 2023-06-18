@@ -41,4 +41,8 @@ public class Mage extends Player{
         super.levelUp();
         spellPower = spellPower+ 10*playerLevel;
     }
+
+    public String description(){
+        return super.description()+" Speell Power:"+spellPower +" Hits count:"+hitsCount+" Ability Range:"+ abilityRange;
+    }
 }

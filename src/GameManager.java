@@ -59,8 +59,10 @@ public class GameManager {
         int chosen = 0;
         while (chosen > players.length || chosen <= 0){
             System.out.println("Please select a player");
+            System.out.println();
             for(int i = 0; i < players.length; i++){
                 System.out.println( i+1 +". " + players[i].description());
+                System.out.println();
             }
             chosen = scanner.nextInt();
         }
@@ -87,11 +89,17 @@ public class GameManager {
                 System.out.println(currentBoard.toString());
                 currentBoard.gameTick(scanner);
             }
-            currentBoard = boards.get(currentLevel);
-            currentLevel = currentLevel + 1;
-            currentBoard.playerInit();
+            if(p.isAlive()){
+                if(boards.size()>currentLevel){
+                currentBoard = boards.get(currentLevel);
+                currentLevel = currentLevel + 1;
+                currentBoard.playerInit();}
+                else
+                    {currentBoard = null;}
+            }
         }
         if (p.isDead()){
+            System.out.println(boards.get(currentLevel-1).toString());
             System.out.println("YOU ARE THE LOSER!");
         }
         else {

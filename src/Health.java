@@ -17,12 +17,16 @@ public class Health extends Resource{
     }
 
     public void damage(int damage){
-        healthAmount = healthAmount - damage;
+        if(damage>healthAmount){
+            healthAmount = 0;
+        }
+        else {
+        healthAmount = healthAmount - damage;}
     }
 
 
     public boolean isDead(){
-        return healthAmount > 0;
+        return healthAmount <= 0;
     }
 
     @Override

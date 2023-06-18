@@ -38,7 +38,7 @@ public class Mana extends Resource{
 
     @Override
     public String toString() {
-        return "Mana:" + manaPool+"/"+manaCost;
+        return "Mana:" + currentMana+"/"+manaPool+" Mana cost:"+manaCost;
     }
 
 }
