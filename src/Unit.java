@@ -54,6 +54,8 @@ abstract public class Unit extends Tile{
 
     public void combat(Unit u) { // this attacker u defender
         sendMessage(this.name + " entered to combat with " + u.name);
+        sendMessage(this.description());
+        sendMessage(u.description());
         attackRoll(u);
         if (u.isDead()){
             getExperianceOf(u);
@@ -76,18 +78,24 @@ abstract public class Unit extends Tile{
     }
 
 
+
+
+    //returns if this is dead
     public boolean isDead(){
         return health.isDead();
     }
+
+
 
     public void setSendMessage(SendMessage sm){
         this.sm = sm;
     }
 
+    //sends massage
     public void sendMessage(String msg){
         sm.send(msg);
     }
-
+//returns if this is alive
     public boolean isAlive(){
         return health.enough();
     }

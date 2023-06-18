@@ -75,6 +75,7 @@ abstract public class Player extends Unit {
     @Override
     public void callDeathOfUnit() {
         if (!isAlive()) {
+            sendMessage("you are dead");
             playerDeathCallBack.call();
         }
     }
