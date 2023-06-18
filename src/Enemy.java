@@ -26,6 +26,7 @@ abstract public class Enemy extends Unit{
     // return is experiance and notify the board about death. need to make sure this is death
      public void callDeathOfUnit(){
          if(!isAlive()){
+             sendMessage(this.name+ " was killed");
              enemyDeathCallBack.call();
          }
      }

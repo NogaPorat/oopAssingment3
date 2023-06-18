@@ -101,6 +101,12 @@ public class Board {
         }
     }
 
+
+
+    public boolean gameIsActiva(){
+        return player.isAlive() & !enemies.isEmpty();
+    }
+
     public String toString(){
         String ans = new String();
         Collections.sort(tiles, new PosComparator());
@@ -124,6 +130,8 @@ public class Board {
         sm.send(msg);
     }
 
+
+    //convert char to tile, if it's an enemy, also adds him to enemy list.
     public Tile convertCharToTile(char c, int i, int y){
         Tile t = null;
         if (c == '.'){
@@ -136,48 +144,49 @@ public class Board {
             player.pos = new Position(i,y);
             t = player;
         }
-        if (c == '.'){
-            t = new Empty(new Position(i,y));
-        }
+        Enemy e = null;
         if (c == 's'){
-            t = new Monster(c, new Position(i,y), "Lannister Solider", 80, 8, 3, 25, 3);
-            enemies.add(t);
+            e = new Monster(c, new Position(i,y), "Lannister Solider", 80, 8, 3, 25, 3);
         }
         if (c == 'k'){
-            t = new Monster(c, new Position(i,y), "Lannister Knight", 200, 14, 8, 50, 4);
+            e = new Monster(c, new Position(i,y), "Lannister Knight", 200, 14, 8, 50, 4);
         }
         if (c == 'q'){
-            t = new Monster(c, new Position(i,y), "Queen's Guard", 400, 20, 15, 100, 5);
+            e = new Monster(c, new Position(i,y), "Queen's Guard", 400, 20, 15, 100, 5);
         }
         if (c == 'z'){
-            t = new Monster(c, new Position(i,y), "Wright", 600, 30, 15, 100, 3);
+            e = new Monster(c, new Position(i,y), "Wright", 600, 30, 15, 100, 3);
         }
         if (c == 'b'){
-            t = new Monster(c, new Position(i,y), "Bear Wright", 1000, 75, 30, 250, 4);
+            e = new Monster(c, new Position(i,y), "Bear Wright", 1000, 75, 30, 250, 4);
         }
         if (c == 'g'){
-            t = new Monster(c, new Position(i,y), "Giant Wright", 1500, 100, 40, 500, 5);
+            e = new Monster(c, new Position(i,y), "Giant Wright", 1500, 100, 40, 500, 5);
         }
         if (c == 'w'){
-            t = new Monster(c, new Position(i,y), "White Walker", 2000, 150, 50, 1000, 6);
+            e = new Monster(c, new Position(i,y), "White Walker", 2000, 150, 50, 1000, 6);
         }
         if (c == 'M'){
-            t = new Monster(c, new Position(i,y), "The Mountain", 1000, 60, 25, 500, 6);
+            e = new Monster(c, new Position(i,y), "The Mountain", 1000, 60, 25, 500, 6);
         }
         if (c == 'C'){
-            t = new Monster(c, new Position(i,y), "Queen Cersei", 100, 10, 10, 1000, 1);
+            e = new Monster(c, new Position(i,y), "Queen Cersei", 100, 10, 10, 1000, 1);
         }
         if (c == 'K'){
-            t = new Monster(c, new Position(i,y), "Night's King", 5000, 300, 150, 5000, 8);
+            e = new Monster(c, new Position(i,y), "Night's King", 5000, 300, 150, 5000, 8);
         }
         if (c == 'B'){
-            t = new Trap(c, new Position(i,y), "Bonus Trap", 1, 1, 1, 250, 1, 5);
+            e = new Trap(c, new Position(i,y), "Bonus Trap", 1, 1, 1, 250, 1, 5);
         }
         if (c == 'Q'){
-            t = new Trap(c, new Position(i,y), "Queen's Trap", 250, 50, 10, 100, 3, 7);
+            e = new Trap(c, new Position(i,y), "Queen's Trap", 250, 50, 10, 100, 3, 7);
         }
         if (c == 'D'){
-            t = new Trap(c, new Position(i,y), "Death Trap", 500, 100, 20, 250, 1, 10);
+            e = new Trap(c, new Position(i,y), "Death Trap", 500, 100, 20, 250, 1, 10);
+        }
+        if (e!= null){
+            enemies.add(e);
+            return e;
         }
         return t;
     }
