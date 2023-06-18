@@ -4,7 +4,6 @@ import java.util.Scanner;
 abstract public class Player extends Unit {
     protected int playerLevel;
     protected Resource resource;
-    protected PlayerDeathCallBack playerDeathCallBack;
     protected SpecialAbillityInRange sa;
 
     public Player(Position pos, String name, int health, int Apoints, int Dpoints) {
@@ -76,7 +75,6 @@ abstract public class Player extends Unit {
     public void callDeathOfUnit() {
         if (!isAlive()) {
             sendMessage("you are dead");
-            playerDeathCallBack.call();
         }
     }
 
@@ -85,10 +83,6 @@ abstract public class Player extends Unit {
     }
 
 
-
-    public void setPlayerCallDeath(PlayerDeathCallBack p) {
-        this.playerDeathCallBack = p;
-    }
 
 
     public boolean gameTickByLetter(Scanner s){
@@ -127,5 +121,12 @@ abstract public class Player extends Unit {
     @Override
     public String description() {
         return super.description() + " " + resource.toString();
+    }
+
+    public String toString(){
+        if (isAlive()){
+            return super.toString();
+        }
+        return "X";
     }
 }

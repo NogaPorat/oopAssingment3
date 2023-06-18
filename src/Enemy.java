@@ -27,7 +27,7 @@ abstract public class Enemy extends Unit{
      public void callDeathOfUnit(){
          if(!isAlive()){
              sendMessage(this.name+ " was killed");
-             enemyDeathCallBack.call();
+             enemyDeathCallBack.call(this);
          }
      }
 

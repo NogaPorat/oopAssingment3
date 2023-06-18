@@ -1,3 +1,3 @@
-public interface PlayerDeathCallBack {
-    public void call();
-}
+//public interface PlayerDeathCallBack {
+//    public void call();
+//}

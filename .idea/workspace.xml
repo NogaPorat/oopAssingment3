@@ -5,26 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2341c40e-e4cc-43d2-b01f-4563e8a1a7f4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/UnitMoveCallBack.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Cooldown.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cooldown.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Enemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Energy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Energy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EnemyDeathCallBack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EnemyDeathCallBack.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Health.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Health.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mana.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mana.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Monster.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Position.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Rogue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Rogue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SpecialAbillityInRange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SpecialAbillityInRange.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Trap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Trap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PlayerDeathCallBack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayerDeathCallBack.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Unit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Unit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Warrior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Warrior.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UnitMoveCallBack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UnitMoveCallBack.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,13 +40,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/NoagaPorat/IdeaProjects/oopAssignment3/src/Main.java&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "onboarding.tips.debug.path": "C:/Users/NoagaPorat/IdeaProjects/oopAssignment3/src/Main.java",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
