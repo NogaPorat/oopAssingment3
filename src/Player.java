@@ -20,6 +20,7 @@ abstract public class Player extends Unit {
         attackPoints = attackPoints + (4 * playerLevel);
         defencePoints = defencePoints + playerLevel;
         resource.levelUp(playerLevel);
+        sendMessage("you made it to PlayerLevel number "+ playerLevel+"!!!!!!!");
     }
 
     public void visit(Enemy e) {
@@ -36,7 +37,7 @@ abstract public class Player extends Unit {
 
     public void castAttempts() {
         if (!resource.enough()) {
-            sendMessage("not anough resource to make the action");
+            sendMessage("not enough resource to make the action");
         } else {
             resource.cast();
             SpecialAbillity();
@@ -99,12 +100,12 @@ abstract public class Player extends Unit {
             return true;
         }
         if (input == 'w'){
-            newPos = new Position(pos.getX(), pos.getY() + 1);
+            newPos = new Position(pos.getX(), pos.getY() - 1);
             this.Move(newPos);
             return true;
         }
         if (input == 's'){
-            newPos = new Position(pos.getX(), pos.getY() - 1);
+            newPos = new Position(pos.getX(), pos.getY() + 1);
             this.Move(newPos);
             return true;
         }
@@ -120,7 +121,7 @@ abstract public class Player extends Unit {
 
     @Override
     public String description() {
-        return super.description() + " " + resource.toString();
+        return super.description() + " Player Level:"+ playerLevel + " " + resource.toString();
     }
 
     public String toString(){

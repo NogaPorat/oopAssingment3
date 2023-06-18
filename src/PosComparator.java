@@ -9,6 +9,6 @@ public class PosComparator implements Comparator<Tile>{
             if (post1.getY() == post2.getY()){
                 return post1.getX() - post2.getX();
             }
-            return post1.getY() - post2.getY();
+            return (post1.getY() - post2.getY());
         }
 }
