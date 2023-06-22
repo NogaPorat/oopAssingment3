@@ -11,11 +11,13 @@ public class Rogue extends Player {
         resource = new Energy(ability);}
 
     public void cast(List<Enemy> enemies) {
-        sendMessage(this.name + " cast special ability ");
+        sendMessage("************* "+this.name + " cast special ability *************");
         for (Enemy e : enemies) {
+            sendMessage(getName() + " attacks "+ e.getName()+ " on ability cast");
             e.defenseRoll(this.attackPoints);
             if (e.isDead()) {
                 getExperianceOf(e);
+                e.callDeathOfUnit();
             }
         }
     }

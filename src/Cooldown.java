@@ -30,7 +30,7 @@ public class Cooldown extends Resource{
 
     @Override
     public String toString() {
-        return "cooldown remaining: "+ remaining;
+        return "Cooldown: "+ remaining+"/"+ability;
     }
 }
 

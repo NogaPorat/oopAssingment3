@@ -12,7 +12,7 @@ public class Warrior extends Player  {
 
     //hits random enemy in range
         public void cast(List<Enemy> enemies){
-            sendMessage(this.name+" cast special ability ");
+            sendMessage("************* "+this.name + " cast special ability *************");
             if (!enemies.isEmpty()){
                 Collections.shuffle(enemies);
                 Enemy e = enemies.get(0);

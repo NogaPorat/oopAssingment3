@@ -75,12 +75,13 @@ public class GameManager {
         boards = new ArrayList<Board>();
         while(b!= null){
             boards.add(b);
-            b.setSendMessage((msg) -> System.out.println(msg));
+            //b.setSendMessage((msg) -> System.out.println(msg));
             i = i + 1;
             b = boardBuilder(i, path);
         }
         currentBoard = boards.get(0);
-        currentBoard.playerInit();
+        currentBoard.setSendMessage((msg) -> System.out.println(msg));
+        currentBoard.playerInit(p);
         System.out.println("The game is ready!");
 
         while (currentBoard != null && p.isAlive() ){
@@ -93,7 +94,8 @@ public class GameManager {
                 if(boards.size()>currentLevel){
                 currentBoard = boards.get(currentLevel);
                 currentLevel = currentLevel + 1;
-                currentBoard.playerInit();}
+                currentBoard.setSendMessage((msg) -> System.out.println(msg));
+                currentBoard.playerInit(p);}
                 else
                     {currentBoard = null;}
             }

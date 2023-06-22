@@ -12,7 +12,7 @@ public class Mana extends Resource{
 
     @Override
     public boolean enough() {
-        return currentMana <= manaCost;
+        return currentMana >= manaCost;
     }
 
     @Override

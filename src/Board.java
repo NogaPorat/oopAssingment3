@@ -9,6 +9,8 @@ import java.util.Scanner;
 public class Board {
     private Player player;
     private List<Enemy> enemies;
+
+    private List<Enemy> traps;
     private List<Tile> tiles;
     protected SendMessage sm;
     protected Position playerStartPos;
@@ -16,6 +18,7 @@ public class Board {
     public Board(Player p, List<String> lines){
         player = p;
         enemies = new ArrayList<Enemy>();
+        traps = new ArrayList<Enemy>();
         tiles = convertStringToBoard(lines);
 
     }
@@ -26,6 +29,8 @@ public class Board {
             for (Enemy e : enemies){
                 e.gameTick(player);
             }
+            for (Enemy t : traps)
+                t.gameTick(player);
         }
     }
 
@@ -43,15 +48,21 @@ public class Board {
         return ans;
     }
 
-    public void playerInit() {
+    public void playerInit(Player p) {
+        this.player = p;
         player.pos = playerStartPos;
-        player.setSendMessage((msg) -> sendMessage(msg));
+        player.setSendMessage((msg) -> this.sendMessage(msg));
         player.setUnitMoveCallBack((position, unit) -> unit.interact(getTileInPos(position)));
         player.setSpecialAbilityInRange((range)-> castInRange(range));
         for(Enemy e:enemies){
-            e.setSendMessage((msg) -> sendMessage(msg));
-            e.setEnemyDeathCallBack((enemy) -> killedEnemy(enemy));
+            e.setSendMessage((msg) -> this.sendMessage(msg));
+            e.setEnemyDeathCallBack((enemy) -> this.killedEnemy(enemy));
             e.setUnitMoveCallBack((position, unit) -> unit.interact(getTileInPos(position)));
+        }
+        for(Enemy t :traps){
+            t.setSendMessage((msg) -> this.sendMessage(msg));
+            t.setEnemyDeathCallBack((enemy) -> this.killedTrap(enemy));
+            t.setUnitMoveCallBack((position, unit) -> unit.interact(getTileInPos(position)));
         }
     }
 
@@ -59,6 +70,13 @@ public class Board {
         Tile newEmt = new Empty(e.pos);
         enemies.remove(e);
         tiles.remove(e);
+        tiles.add(newEmt);
+    }
+
+    public void killedTrap(Enemy t){
+        Tile newEmt = new Empty(t.pos);
+        traps.remove(t);
+        tiles.remove(t);
         tiles.add(newEmt);
     }
 
@@ -76,13 +94,19 @@ public class Board {
         return null;
     }
 
+
     public void castInRange(double range){
         List<Enemy> enemiesInRange= new ArrayList<Enemy>();
         for (Enemy e: enemies){
-            if (player.range(e) < range){
+            if (player.range(e) <= range){
                 enemiesInRange.add(e);
             }
         }
+        for (Enemy e: traps){
+            if (player.range(e) <= range){
+                enemiesInRange.add(e);
+        }
+    }
         player.cast(enemiesInRange);
     }
 
@@ -132,7 +156,7 @@ public class Board {
             playerStartPos = new Position(i,y);
             t = player;
         }
-        Enemy e = null;
+        Monster e = null;
         if (c == 's'){
             e = new Monster(c, new Position(i,y), "Lannister Solider", 80, 8, 3, 25, 3);
         }
@@ -163,19 +187,24 @@ public class Board {
         if (c == 'K'){
             e = new Monster(c, new Position(i,y), "Night's King", 5000, 300, 150, 5000, 8);
         }
+        Trap trap = null;
         if (c == 'B'){
-            e = new Trap(c, new Position(i,y), "Bonus Trap", 1, 1, 1, 250, 1, 5);
+            trap = new Trap(c, new Position(i,y), "Bonus Trap", 1, 1, 1, 250, 1, 5);
         }
         if (c == 'Q'){
-            e = new Trap(c, new Position(i,y), "Queen's Trap", 250, 50, 10, 100, 3, 7);
+            trap = new Trap(c, new Position(i,y), "Queen's Trap", 250, 50, 10, 100, 3, 7);
         }
         if (c == 'D'){
-            e = new Trap(c, new Position(i,y), "Death Trap", 500, 100, 20, 250, 1, 10);
+            trap = new Trap(c, new Position(i,y), "Death Trap", 500, 100, 20, 250, 1, 10);
         }
         if (e!= null){
             enemies.add(e);
 
             return e;
+        }
+        if (trap!=null){
+            traps.add(trap);
+            return trap;
         }
         return t;
     }

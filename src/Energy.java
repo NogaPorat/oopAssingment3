@@ -27,6 +27,6 @@ public class Energy extends Resource{
     }
 
     public String toString(){
-        return  "current energy: " + currentEnergy + "/" + cost;
+        return  "current energy: " + currentEnergy + " cost: " + cost;
     }
 }

@@ -21,10 +21,12 @@ public class Mage extends Player{
 
 
     public void cast(List<Enemy> enemies){
+        sendMessage("************* "+this.name + " cast special ability *************");
         int hits = 0;
         while(hits< hitsCount & !enemies.isEmpty()){
             Collections.shuffle(enemies);
             Enemy e = enemies.get(0);
+            sendMessage(getName() + " attacks "+ e.getName()+ " on ability cast");
             e.damage(spellPower);
             if(e.isDead()){
                 getExperianceOf(e);
@@ -43,6 +45,6 @@ public class Mage extends Player{
     }
 
     public String description(){
-        return super.description()+" Speell Power:"+spellPower +" Hits count:"+hitsCount+" Ability Range:"+ abilityRange;
+        return super.description()+ "\n"+" Speell Power:"+spellPower +" Hits count:"+hitsCount+" Ability Range:"+ abilityRange;
     }
 }
