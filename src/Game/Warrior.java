@@ -1,7 +1,14 @@
+package Game;
+
+import Game.Cooldown;
+import Game.Enemy;
+import Game.Player;
+import Game.Position;
+
 import java.util.List;
 import java.util.Collections;
 
-public class Warrior extends Player  {
+public class Warrior extends Player {
 
     public Warrior(Position pos, String name, int health, int Apoints, int Dpoints, int ability){
         super(pos, name, health, Apoints, Dpoints);
@@ -12,7 +19,7 @@ public class Warrior extends Player  {
 
     //hits random enemy in range
         public void cast(List<Enemy> enemies){
-            sendMessage(this.name+" cast special ability ");
+            sendMessage("************* "+this.name + " cast special ability *************");
             if (!enemies.isEmpty()){
                 Collections.shuffle(enemies);
                 Enemy e = enemies.get(0);

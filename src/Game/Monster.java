@@ -1,4 +1,4 @@
-import java.util.Random;
+package Game;
 
 public class Monster extends Enemy {
     protected int visionRange;
@@ -18,7 +18,7 @@ public class Monster extends Enemy {
         if (range(p) <= visionRange) {
             int dx = pos.getX() - p.pos.getX();
             int dy = pos.getY() - p.pos.getY();
-            if (dx > dy) {
+            if (Math.abs(dx) > Math.abs(dy)) {
                 if (dx > 0) {
                     newPos = positions[0];
                 } else {

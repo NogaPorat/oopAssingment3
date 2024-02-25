@@ -1,3 +1,5 @@
+package Game;
+
 abstract public class Tile {
     protected char character;
     protected Position pos;

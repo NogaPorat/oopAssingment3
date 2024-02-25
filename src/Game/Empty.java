@@ -1,4 +1,8 @@
-public class Empty extends Tile{
+package Game;
+
+import Game.Position;
+
+public class Empty extends Tile {
     public Empty(Position pos){
         super(pos);
         this.character = '.';

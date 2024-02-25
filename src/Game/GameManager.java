@@ -1,11 +1,8 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
+package Game;
+
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Collections;
 import java.io.File;
 import java.util.Scanner;
 
@@ -54,7 +51,8 @@ public class GameManager {
         Player ThorosOfMyr = new Mage(new Position(0, 0), "Thoros Of Myr",250, 25, 4, 150, 20, 20, 3, 4);
         Player AryaStark = new Rogue(new Position(0, 0), "Arya Stark",150, 40, 2, 20);
         Player Bronn = new Rogue(new Position(0, 0), "Bronn",250, 35, 3, 50);
-        Player [] players = {JohnSnow, TheHound, Melisandre, ThorosOfMyr, AryaStark, Bronn};
+        Player Ygritte = new Hunter(new Position(0,0),"Ygritte",220,30,2,6);
+        Player [] players = {JohnSnow, TheHound, Melisandre, ThorosOfMyr, AryaStark, Bronn,Ygritte};
 
         int chosen = 0;
         while (chosen > players.length || chosen <= 0){
@@ -75,12 +73,13 @@ public class GameManager {
         boards = new ArrayList<Board>();
         while(b!= null){
             boards.add(b);
-            b.setSendMessage((msg) -> System.out.println(msg));
+            //b.setSendMessage((msg) -> System.out.println(msg));
             i = i + 1;
             b = boardBuilder(i, path);
         }
         currentBoard = boards.get(0);
-        currentBoard.playerInit();
+        currentBoard.setSendMessage((msg) -> System.out.println(msg));
+        currentBoard.playerInit(p);
         System.out.println("The game is ready!");
 
         while (currentBoard != null && p.isAlive() ){
@@ -93,7 +92,8 @@ public class GameManager {
                 if(boards.size()>currentLevel){
                 currentBoard = boards.get(currentLevel);
                 currentLevel = currentLevel + 1;
-                currentBoard.playerInit();}
+                currentBoard.setSendMessage((msg) -> System.out.println(msg));
+                currentBoard.playerInit(p);}
                 else
                     {currentBoard = null;}
             }

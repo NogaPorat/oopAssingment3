@@ -1,3 +1,5 @@
+package Game;
+
 abstract public class Resource {
     abstract public boolean enough();
     abstract public void gameTick(int level);

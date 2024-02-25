@@ -1,3 +1,5 @@
+package Game;
+
 public class Mana extends Resource{
     protected int manaPool;
     protected int currentMana;
@@ -12,7 +14,7 @@ public class Mana extends Resource{
 
     @Override
     public boolean enough() {
-        return currentMana <= manaCost;
+        return currentMana >= manaCost;
     }
 
     @Override
@@ -38,7 +40,7 @@ public class Mana extends Resource{
 
     @Override
     public String toString() {
-        return "Mana:" + currentMana+"/"+manaPool+" Mana cost:"+manaCost;
+        return "Game.Mana:" + currentMana+"/"+manaPool+" Game.Mana cost:"+manaCost;
     }
 
 }

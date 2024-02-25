@@ -1,4 +1,6 @@
-abstract public class Enemy extends Unit{
+package Game;
+
+abstract public class Enemy extends Unit {
     protected EnemyDeathCallBack enemyDeathCallBack;
 
 
@@ -10,10 +12,6 @@ abstract public class Enemy extends Unit{
 
     public void accept(Unit u){
         u.visit(this);
-    }
-
-    public void damage(int damage){
-        health.damage(damage);
     }
 
      public void visit(Enemy e){

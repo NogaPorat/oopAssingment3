@@ -1,3 +1,5 @@
+package Game;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -56,12 +58,8 @@ abstract public class Player extends Unit {
 
     public boolean gameTick(Scanner s) {
         boolean act = gameTickByLetter(s);
-        if (act){
-            resource.gameTick(playerLevel);
-        }
-        else{
+        if(!act)
             sm.send("illegal input");
-        }
         return act;
     }
 
@@ -92,21 +90,25 @@ abstract public class Player extends Unit {
         if (input == 'a'){
             newPos = new Position(pos.getX() - 1, pos.getY());
             this.Move(newPos);
+            resource.gameTick(playerLevel);
             return true;
         }
         if (input == 'd'){
             newPos = new Position(pos.getX() + 1, pos.getY());
             this.Move(newPos);
+            resource.gameTick(playerLevel);
             return true;
         }
         if (input == 'w'){
             newPos = new Position(pos.getX(), pos.getY() - 1);
             this.Move(newPos);
+            resource.gameTick(playerLevel);
             return true;
         }
         if (input == 's'){
             newPos = new Position(pos.getX(), pos.getY() + 1);
             this.Move(newPos);
+            resource.gameTick(playerLevel);
             return true;
         }
         if (input == 'e'){
@@ -114,6 +116,7 @@ abstract public class Player extends Unit {
             return true;
         }
         if (input == 'q') {
+            resource.gameTick(playerLevel);
             return true;
         }
         return false;

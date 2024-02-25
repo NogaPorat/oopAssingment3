@@ -1,3 +1,5 @@
+package Game;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -8,7 +10,7 @@ public class Mage extends Player{
     private int hitsCount;
     private int abilityRange;
 
-    public Mage(Position pos, String name, int health, int Apoints, int Dpoints,int manaPool, int manaCost, int spellPower, int hitsCount, int abilityRange){
+    public Mage(Position pos, String name, int health, int Apoints, int Dpoints, int manaPool, int manaCost, int spellPower, int hitsCount, int abilityRange){
         super(pos, name, health, Apoints, Dpoints);
         this.spellPower= spellPower;
         this.hitsCount = hitsCount;
@@ -21,10 +23,12 @@ public class Mage extends Player{
 
 
     public void cast(List<Enemy> enemies){
+        sendMessage("************* "+this.name + " cast special ability *************");
         int hits = 0;
         while(hits< hitsCount & !enemies.isEmpty()){
             Collections.shuffle(enemies);
             Enemy e = enemies.get(0);
+            sendMessage(getName() + " attacks "+ e.getName()+ " on ability cast");
             e.damage(spellPower);
             if(e.isDead()){
                 getExperianceOf(e);
@@ -43,6 +47,6 @@ public class Mage extends Player{
     }
 
     public String description(){
-        return super.description()+" Speell Power:"+spellPower +" Hits count:"+hitsCount+" Ability Range:"+ abilityRange;
+        return super.description()+ "\n"+" Speell Power:"+spellPower +" Hits count:"+hitsCount+" Ability Range:"+ abilityRange;
     }
 }
