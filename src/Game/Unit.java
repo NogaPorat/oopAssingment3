@@ -1,3 +1,5 @@
+package Game;
+
 abstract public class Unit extends Tile{
     protected String name;
     protected Health health;
@@ -15,6 +17,14 @@ abstract public class Unit extends Tile{
         this.defencePoints = Dpoints;
     }
 
+
+    public int getHealtAmount(){
+        return health.healthAmount;
+    }
+
+    public void setHealth(Health h){
+        this.health= h;
+    }
     public void visit(Empty e){
         swapPositions(e);
     }
@@ -121,6 +131,6 @@ abstract public class Unit extends Tile{
     }
 
     public String description(){
-        return ("Name: " + name + " Health: " + health.toString() + " defence points: " + defencePoints + " attack points: " + attackPoints + " Experience: " + experience);
+        return ("Name: " + name + " Game.Health: " + health.toString() + " defence points: " + defencePoints + " attack points: " + attackPoints + " Experience: " + experience);
     }
 }

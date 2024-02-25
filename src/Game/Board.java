@@ -1,6 +1,5 @@
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+package Game;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -189,13 +188,13 @@ public class Board {
         }
         Trap trap = null;
         if (c == 'B'){
-            trap = new Trap(c, new Position(i,y), "Bonus Trap", 1, 1, 1, 250, 1, 5);
+            trap = new Trap(c, new Position(i,y), "Bonus Game.Trap", 1, 1, 1, 250, 1, 5);
         }
         if (c == 'Q'){
-            trap = new Trap(c, new Position(i,y), "Queen's Trap", 250, 50, 10, 100, 3, 7);
+            trap = new Trap(c, new Position(i,y), "Queen's Game.Trap", 250, 50, 10, 100, 3, 7);
         }
         if (c == 'D'){
-            trap = new Trap(c, new Position(i,y), "Death Trap", 500, 100, 20, 250, 1, 10);
+            trap = new Trap(c, new Position(i,y), "Death Game.Trap", 500, 100, 20, 250, 1, 10);
         }
         if (e!= null){
             enemies.add(e);

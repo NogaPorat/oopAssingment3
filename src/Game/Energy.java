@@ -1,3 +1,5 @@
+package Game;
+
 public class Energy extends Resource{
     private int currentEnergy;
     private int cost;

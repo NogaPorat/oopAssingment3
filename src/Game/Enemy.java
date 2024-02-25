@@ -1,4 +1,6 @@
-abstract public class Enemy extends Unit{
+package Game;
+
+abstract public class Enemy extends Unit {
     protected EnemyDeathCallBack enemyDeathCallBack;
 
 

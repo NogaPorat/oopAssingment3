@@ -1,3 +1,5 @@
+package Game;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -8,7 +10,7 @@ public class Mage extends Player{
     private int hitsCount;
     private int abilityRange;
 
-    public Mage(Position pos, String name, int health, int Apoints, int Dpoints,int manaPool, int manaCost, int spellPower, int hitsCount, int abilityRange){
+    public Mage(Position pos, String name, int health, int Apoints, int Dpoints, int manaPool, int manaCost, int spellPower, int hitsCount, int abilityRange){
         super(pos, name, health, Apoints, Dpoints);
         this.spellPower= spellPower;
         this.hitsCount = hitsCount;

@@ -1,4 +1,5 @@
-import java.util.Collections;
+package Game;
+
 import java.util.List;
 
 public class Rogue extends Player {

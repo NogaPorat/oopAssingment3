@@ -1,3 +1,7 @@
+package Game;
+
+import Game.Position;
+
 import java.util.Comparator;
 public class PosComparator implements Comparator<Tile>{
         public PosComparator(){

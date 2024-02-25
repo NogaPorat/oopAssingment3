@@ -1,4 +1,4 @@
-import java.util.Random;
+package Game;
 
 public class Monster extends Enemy {
     protected int visionRange;

@@ -1,4 +1,6 @@
-public class Trap extends Enemy{
+package Game;
+
+public class Trap extends Enemy {
     protected int visibilityTime;
     protected int inVisibilityTime;
     protected int tickCount;

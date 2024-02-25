@@ -1,3 +1,5 @@
+package Game;
+
 public class Cooldown extends Resource{
     protected int ability;
     protected int remaining;
@@ -5,6 +7,10 @@ public class Cooldown extends Resource{
     public Cooldown(int ability){
         this.ability = ability;
         remaining = 0;
+    }
+
+    public int getRemaining(){
+        return remaining;
     }
     @Override
     public boolean enough() {
@@ -30,7 +36,7 @@ public class Cooldown extends Resource{
 
     @Override
     public String toString() {
-        return "Cooldown: "+ remaining+"/"+ability;
+        return "Game.Cooldown: "+ remaining+"/"+ability;
     }
 }
 
